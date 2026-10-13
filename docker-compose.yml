@@ -1,0 +1,34 @@
+services:
+  dev:
+    image: dev
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    container_name: dev
+    hostname: dev
+    working_dir: /workspace
+    init: true
+    environment:
+      SSH_AUTH_SOCK: /ssh-agent.sock
+      TERM: ${TERM:-xterm-256color}
+    volumes:
+      - ${WORKSPACE:-$HOME/github_repo}:/workspace
+      - ${SSH_AUTH_SOCK:-/dev/null}:/ssh-agent.sock
+      - dotfiles-repos:${HOME}/github_repo
+      # - copilot:${HOME}/.copilot
+      - gh:${HOME}/.config/gh
+      # - nvim-data:${HOME}/.local/share/nvim
+      # - nvim-state:${HOME}/.local/state/nvim
+      # - nvim-cache:${HOME}/.cache/nvim
+      - conda-envs:/opt/conda/envs
+
+volumes:
+  dotfiles-repos:
+  copilot:
+  gh:
+  nvim-data:
+  nvim-state:
+  nvim-cache:
+  conda-envs:

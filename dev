@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Usage: ./dev [repo]   |   ./dev --rebuild   |   ./dev --stop
+set -e
+cd "$(dirname "$(readlink -f "$0")")"
+export UID GID=$(id -g)
+case "${1:-}" in
+  --rebuild) docker compose build --pull && docker compose up -d --force-recreate; exit ;;
+  --stop) docker compose down; exit ;;
+esac
+[[ -z $(docker compose ps -q --status running dev) ]] && docker compose up -d --build
+dir=/workspace${1:+/$1}
+exec docker compose exec -w "$dir" dev zsh
