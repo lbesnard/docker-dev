@@ -6,7 +6,7 @@ ARG GID=1000
 ENV DEBIAN_FRONTEND=noninteractive LANG=C.UTF-8
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      ca-certificates curl git openssh-client sudo locales unzip xz-utils less procps \
+      ca-certificates curl git openssh-client sudo file locales unzip xz-utils less procps \
       zsh tmux silversearcher-ag \
       build-essential cmake pkg-config \
       libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev libbz2-dev \
