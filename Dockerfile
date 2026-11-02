@@ -4,6 +4,8 @@ ARG USERNAME=lbesnard
 ARG UID=1000
 ARG GID=1000
 ENV DEBIAN_FRONTEND=noninteractive LANG=C.UTF-8
+# zerobrew's curl/openssl have no CA bundle; point everything at the system one
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt SSL_CERT_DIR=/etc/ssl/certs
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
       ca-certificates curl git openssh-client sudo file locales unzip xz-utils less procps \
