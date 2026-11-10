@@ -1,5 +1,7 @@
 # Extra packages installed with zerobrew (zb). Add one per line, then ./dev --rebuild
 # Or try one live: zb install <name>
+
+brew "age"
 brew "bat"
 brew "btop"
 brew "diskonaut"
@@ -12,6 +14,7 @@ brew "lsd"
 brew "mcfly"
 brew "ncdu"
 brew "poppler"
+brew "pre-commit"
 brew "procs"
 brew "python@3.12"
 brew "ranger"

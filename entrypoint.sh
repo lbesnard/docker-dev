@@ -34,6 +34,7 @@ link gitconfig        ~/.gitconfig
 link gitignore        ~/.gitignore
 link nvim             ~/.config/nvim
 link tmux/tmux.conf   ~/.tmux.conf
+link tmux/tmux.conf.ssh ~/.tmux.conf.local
 link vim/vimrc        ~/.vimrc
 link zsh_alias        ~/.zsh_alias
 link zsh/zshrc        ~/.zshrc
