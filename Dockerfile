@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # ubuntu:24.04 ships a default user at UID 1000; replace it
 RUN userdel -r ubuntu 2>/dev/null || true \
- && groupadd -g ${GID} ${USERNAME} \
+ && (getent group ${GID} >/dev/null 2>&1 || groupadd -g ${GID} ${USERNAME}) \
  && useradd -m -u ${UID} -g ${GID} -s /usr/bin/zsh ${USERNAME} \
  && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
  && mkdir -p /opt/conda /workspace /home/${USERNAME}/github_repo \
